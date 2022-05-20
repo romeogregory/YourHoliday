@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
-import { Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction, Select, IndexPath, SelectItem  } from '@ui-kitten/components';
+import { Divider, Icon, Layout, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Picker } from "@react-native-picker/picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const BackIcon = (props) => (
@@ -19,6 +20,7 @@ export const SettingsScreen = ({ navigation }) => {
 
   const [Region, setRegion] = useState(getRegion);
   const setNewRegion = async (region) => {
+
     setRegion(region);
     try {
       await AsyncStorage.setItem("Region", region);
@@ -33,9 +35,10 @@ export const SettingsScreen = ({ navigation }) => {
     } catch (e) {
       console.log(e);
     }
-    setRegion(region);
+    // setRegion(region);
     // return region;
   };
+  
   getRegion();
 
   return (
@@ -44,14 +47,15 @@ export const SettingsScreen = ({ navigation }) => {
       <Divider/>
       <Layout style={{ flex: 1 }}>
         <View style={styles.container}>
-            <Select
-                selectedIndex={Region}
-                onSelect={index => setNewRegion(index)}
-                label='Select your region'>
-                <SelectItem title='North' value="noord" />
-                <SelectItem title='South' value="zuid"/>
-                <SelectItem title='West' value="west"/>
-            </Select>
+          
+          <Picker
+            selectedValue={Region}
+            onValueChange={(itemValue, itemIndex) => setNewRegion(itemValue)}
+          >
+            <Picker.Item label="noord" value="noord" />
+            <Picker.Item label="midden" value="midden" />
+            <Picker.Item label="zuid" value="zuid" />
+          </Picker>
         </View>
       </Layout>
     </SafeAreaView>
@@ -61,6 +65,6 @@ export const SettingsScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-      margin: 30
+      margin: 5
     }
 });
