@@ -15,7 +15,7 @@ export const SettingsScreen = ({ navigation }) => {
   };
 
   const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
+    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
   );
 
   const [Region, setRegion] = useState(getRegion);
@@ -27,7 +27,6 @@ export const SettingsScreen = ({ navigation }) => {
     } catch (e) {
       console.log(e);
     }
-    console.log(region);
   };
   const getRegion = async () => {
     try {
@@ -35,19 +34,18 @@ export const SettingsScreen = ({ navigation }) => {
     } catch (e) {
       console.log(e);
     }
-    // setRegion(region);
-    // return region;
+    setRegion(region);
   };
-  
+
   getRegion();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <TopNavigation title='YourHolidays' alignment='center' accessoryLeft={BackAction}/>
-      <Divider/>
+      <TopNavigation title='YourHolidays' alignment='center' accessoryLeft={BackAction} />
+      <Divider />
       <Layout style={{ flex: 1 }}>
         <View style={styles.container}>
-          
+
           <Picker
             selectedValue={Region}
             onValueChange={(itemValue, itemIndex) => setNewRegion(itemValue)}
@@ -64,7 +62,7 @@ export const SettingsScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      margin: 5
-    }
+  container: {
+    margin: 5
+  }
 });

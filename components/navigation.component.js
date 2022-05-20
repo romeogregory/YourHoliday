@@ -5,7 +5,7 @@ import { SettingsScreen } from './settings.component';
 import { AboutScreen } from './about.component';
 import { NextHolidayScreen } from './nextHoliday.component';
 import { UpcomingHolidaysScreen } from './upcomingHolidays.component';
-import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon  } from '@ui-kitten/components';
+import { BottomNavigation, BottomNavigationTab, Icon  } from '@ui-kitten/components';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
