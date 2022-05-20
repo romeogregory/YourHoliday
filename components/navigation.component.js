@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen } from './home.component';
-import { DetailsScreen } from './details.component';
+import { SettingsScreen } from './settings.component';
+import { AboutScreen } from './about.component';
+import { NextHolidayScreen } from './nextHoliday.component';
+import { UpcomingHolidaysScreen } from './upcomingHolidays.component';
 import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon  } from '@ui-kitten/components';
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -36,10 +38,10 @@ const BottomTabBar = ({ navigation, state }) => (
 
 const TabNavigator = () => (
   <Navigator tabBar={props => <BottomTabBar {...props} />}>
-    <Screen name='Upcoming Holidays' icon={CalendarIcon} component={HomeScreen}/>
-    <Screen name='Until Next Holiday'  icon={ClockIcon} component={DetailsScreen}/>
-    <Screen name='About Us'  icon={HeartIcon} component={DetailsScreen}/>
-    <Screen name='Settings'  icon={SettingsIcon} component={DetailsScreen}/>
+    <Screen name='Upcoming Holidays' icon={CalendarIcon} component={UpcomingHolidaysScreen}/>
+    <Screen name='Until Next Holiday'  icon={ClockIcon} component={NextHolidayScreen}/>
+    <Screen name='About Us'  icon={HeartIcon} component={AboutScreen}/>
+    <Screen name='Settings'  icon={SettingsIcon} component={SettingsScreen}/>
   </Navigator>
 );
 
